@@ -1,0 +1,1596 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: fuente1;
+    src: url(Fonts/gobold/Gobold\ Bold\ Italic.otf);
+}
+
+@font-face {
+    font-family: fuente2;
+    src: url(Fonts/Lovelace-Script-Extrabold-trial.ttf);
+}
+
+@font-face {
+    font-family: fuente3;
+    src: url(Fonts/Valentine\ Day\ PERSONAL\ USE\ ONLY!.ttf);
+}
+
+html {
+    font-family: fuente1, Arial, sans-serif;
+    width: 100%;
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin-left: 5%;
+    margin-right: 5%;
+    background: linear-gradient(135deg, rgb(206, 130, 67) 0%, rgb(186, 110, 47) 100%);
+    min-height: 100vh;
+    animation: fadeIn 0.8s ease-in;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 94, 60, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================
+   HEADER Y NAVEGACIÓN
+======================================== */
+header {
+    position: relative;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    overflow: hidden;
+    margin-bottom: 20px;
+    animation: slideDown 0.8s ease-out;
+    border-radius: 15px;
+    background: linear-gradient(135deg, rgba(139, 94, 60, 0.1), rgba(177, 103, 42, 0.1));
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.banner {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2em;
+    z-index: 1;
+    font-family: fuente3, serif;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+    animation: glow 3s ease-in-out infinite alternate;
+    transition: all 0.3s ease;
+}
+
+@keyframes glow {
+    from { 
+        text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+        filter: brightness(1);
+    }
+    to { 
+        text-shadow: 3px 3px 12px rgba(255,255,255,0.6);
+        filter: brightness(1.1);
+    }
+}
+
+.banner:hover {
+    transform: translateX(-50%) scale(1.05);
+    cursor: default;
+}
+
+header img {
+    width: 100%;
+    max-height: 300px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+    transition: all 0.4s ease;
+    border-radius: 15px;
+}
+
+header img:hover {
+    filter: brightness(1.1) contrast(1.05);
+    transform: scale(1.01);
+}
+
+.eslogan {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2em;
+    color: rgb(49, 26, 3);
+    z-index: 1;
+    font-family: fuente2, serif;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.9);
+    animation: float 4s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0px); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+.eslogan:hover {
+    color: rgb(35, 18, 2);
+    text-shadow: 2px 2px 6px rgba(255,255,255,1);
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 14%;
+    z-index: 2;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo:hover {
+    transform: scale(1.08) rotate(5deg);
+    filter: brightness(1.1);
+}
+
+.logo img {
+    border-radius: 96px;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    transition: all 0.4s ease;
+}
+
+.logo img:hover {
+    box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+}
+
+/* Navegación mejorada */
+nav {
+    background: linear-gradient(135deg, #5c3618, #7d4a25, #8b5e3c);
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    flex-wrap: wrap;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    animation: slideUp 0.8s ease-out 0.2s both;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+    animation: navShimmer 4s ease-in-out infinite;
+}
+
+@keyframes navShimmer {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    flex-grow: 1;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    z-index: 1;
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s ease;
+    z-index: -1;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #d4a77d, #f8e7d7);
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+nav a:hover::before {
+    left: 100%;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a:hover {
+    background: linear-gradient(135deg, rgb(117, 70, 31), rgb(139, 94, 60));
+    color: rgb(248, 231, 215);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* ========================================
+   MAIN CONTENT - PÁGINA PRINCIPAL
+======================================== */
+main {
+    padding: 20px 0;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+@keyframes fadeInUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.main {
+    display: flex;
+    background: linear-gradient(135deg, rgb(48, 26, 8), rgb(68, 36, 18));
+    gap: 15px;
+    min-height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.03), transparent);
+    pointer-events: none;
+}
+
+.main a {
+    color: white;
+    text-decoration: none;
+}
+
+.left {
+    background: linear-gradient(135deg, rgba(177, 103, 42, 0.9), rgba(197, 123, 62, 0.9));
+    color: white;
+    width: 150px;
+    text-align: center;
+    line-height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.left::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.15), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.8s ease;
+}
+
+.left:hover::before {
+    transform: translateX(100%);
+}
+
+.left:hover {
+    transform: scale(1.03) translateX(5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, rgba(197, 123, 62, 0.9), rgba(217, 143, 82, 0.9));
+}
+
+.items {
+    flex: 1;
+    background: linear-gradient(135deg, rgba(48, 26, 8, 0.8), rgba(68, 36, 18, 0.8));
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-content: flex-start;
+    padding: 15px;
+}
+
+.box {
+    background: linear-gradient(135deg, rgba(177, 103, 42, 0.8), rgba(197, 123, 62, 0.8));
+    width: calc(50% - 10px);
+    text-align: center;
+    line-height: 127px;
+    color: white;
+    border-radius: 15px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.box::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translate(-50%, -50%);
+}
+
+.box:hover::before {
+    width: 300%;
+    height: 300%;
+}
+
+.box:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    background: linear-gradient(135deg, rgba(197, 123, 62, 0.9), rgba(217, 143, 82, 0.9));
+}
+
+/* ========================================
+   PRODUCTOS
+======================================== */
+.tituloProductos {
+    text-align: center;
+    color: #fff;
+    font-size: 2.8em;
+    margin: 50px 0;
+    font-family: fuente2, serif;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+    animation: titlePulse 3s ease-in-out infinite alternate;
+    position: relative;
+}
+
+.tituloProductos::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #d4a77d, #f8e7d7, #d4a77d);
+    transform: translateX(-50%);
+    border-radius: 2px;
+    animation: titleUnderline 3s ease-in-out infinite alternate;
+}
+
+@keyframes titlePulse {
+    from { transform: scale(1); filter: brightness(1); }
+    to { transform: scale(1.02); filter: brightness(1.1); }
+}
+
+@keyframes titleUnderline {
+    from { width: 100px; }
+    to { width: 150px; }
+}
+
+.categoriaProductos {
+    background: linear-gradient(135deg, rgba(177, 103, 42, 0.95), rgba(197, 123, 62, 0.95));
+    margin: 40px auto;
+    padding: 35px;
+    border-radius: 20px;
+    max-width: 1000px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+    animation: categorySlide 0.8s ease-out;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.categoriaProductos::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+@keyframes categorySlide {
+    from { transform: translateX(-40px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.categoriaProductos h2 {
+    color: #311a03;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-family: fuente3, serif;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.6);
+    position: relative;
+}
+
+.categoriaProductos h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    width: 80px;
+    height: 3px;
+    background: #311a03;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.categoriaProductos h3 {
+    color: #5c3618;
+    margin: 30px 0 25px 0;
+    text-align: center;
+    font-size: 1.6em;
+    font-family: fuente1, sans-serif;
+    padding: 15px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.categoriaProductos h3:hover {
+    background: rgba(255,255,255,0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.tipoCafe, .tipoPasteleria, .tipoBebida {
+    margin-bottom: 35px;
+}
+
+.listaProductos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    padding: 15px;
+}
+
+.producto {
+    background: linear-gradient(135deg, #f8e7d7, #fff2e6);
+    border: 2px solid #d4a77d;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.producto::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.8s ease;
+}
+
+.producto:hover::before {
+    left: 100%;
+}
+
+.producto:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    border-color: #8b5e3c;
+    background: linear-gradient(135deg, #fff2e6, #ffffff);
+}
+
+.producto h4 {
+    margin: 0 0 15px 0;
+    color: #4f2d12;
+    font-size: 1.3em;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.producto:hover h4 {
+    color: #3d2109;
+}
+
+.producto .descripcion {
+    font-size: 0.95em;
+    color: #7b4f2a;
+    margin: 15px 0;
+    font-style: italic;
+    line-height: 1.5;
+    transition: color 0.3s ease;
+}
+
+.producto:hover .descripcion {
+    color: #6a4424;
+}
+
+.info-producto {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.info-producto span {
+    background: rgba(139, 94, 60, 0.1);
+    color: #5c3618;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    border: 1px solid #d4a77d;
+    transition: all 0.3s ease;
+}
+
+.info-producto span:hover {
+    background: rgba(139, 94, 60, 0.2);
+    transform: scale(1.05);
+}
+
+.alergeno {
+    background: rgba(244, 67, 54, 0.1) !important;
+    color: #d32f2f !important;
+    border-color: #f44336 !important;
+}
+
+.especial {
+    background: rgba(255, 193, 7, 0.2) !important;
+    color: #f57c00 !important;
+    border-color: #ffc107 !important;
+}
+
+.saludable {
+    background: rgba(76, 175, 80, 0.1) !important;
+    color: #2e7d32 !important;
+    border-color: #4caf50 !important;
+}
+
+.producto .precio {
+    font-weight: bold;
+    color: #a04a00;
+    font-size: 1.4em;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(160, 74, 0, 0.1);
+    border-radius: 12px;
+    border: 2px solid #d4a77d;
+    transition: all 0.3s ease;
+}
+
+.producto:hover .precio {
+    background: rgba(160, 74, 0, 0.15);
+    border-color: #8b5e3c;
+    transform: scale(1.02);
+}
+
+/* ========================================
+   FORMULARIOS MEJORADOS - MISMO ANCHO QUE HEADER/FOOTER
+======================================== */
+form {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 231, 215, 0.95));
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    max-width: none; /* Removido para que coincida con el ancho del contenedor */
+    width: 100%; /* Ancho completo del contenedor padre */
+    margin: 30px 0; /* Cambiado de margin auto a margin vertical */
+    animation: formSlideIn 0.8s ease-out;
+    position: relative;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(212, 167, 125, 0.3);
+}
+
+form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    border-radius: 20px;
+    pointer-events: none;
+    animation: formShimmer 6s ease-in-out infinite;
+}
+
+@keyframes formShimmer {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+@keyframes formSlideIn {
+    from { transform: scale(0.95) translateY(20px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+form h2 {
+    text-align: center;
+    color: #5c3618;
+    margin-bottom: 30px;
+    font-family: fuente3, serif;
+    font-size: 2.2em;
+    position: relative;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+form h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #8b5e3c, #d4a77d);
+    transform: translateX(-50%);
+    border-radius: 2px;
+    animation: titleGrow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGrow {
+    from { width: 60px; }
+    to { width: 80px; }
+}
+
+form h3 {
+    text-align: center;
+    color: #7b4f2a;
+    margin-bottom: 25px;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+fieldset {
+    border: 2px solid #d4a77d;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 25px 0;
+    background: linear-gradient(135deg, rgba(248, 231, 215, 0.4), rgba(255, 255, 255, 0.3));
+    transition: all 0.4s ease;
+    position: relative;
+    backdrop-filter: blur(5px);
+}
+
+fieldset::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+fieldset:hover {
+    border-color: #8b5e3c;
+    background: linear-gradient(135deg, rgba(248, 231, 215, 0.6), rgba(255, 255, 255, 0.5));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+fieldset:hover::before {
+    opacity: 1;
+}
+
+legend {
+    font-weight: bold;
+    color: #5c3618;
+    padding: 8px 15px;
+    font-size: 1.1em;
+    background: linear-gradient(135deg, #ffffff, #f8e7d7);
+    border-radius: 8px;
+    border: 2px solid #d4a77d;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+legend:hover {
+    border-color: #8b5e3c;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+label {
+    display: block;
+    margin: 20px 0 8px 0;
+    font-weight: bold;
+    color: #4f2d12;
+    transition: all 0.3s ease;
+    font-size: 1em;
+    position: relative;
+}
+
+label::before {
+    content: '▸';
+    position: absolute;
+    left: -15px;
+    color: #8b5e3c;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+label:hover::before {
+    opacity: 1;
+    left: -20px;
+}
+
+label:hover {
+    color: #3d2109;
+    transform: translateX(5px);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 2px solid #d4a77d;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fffdf9, #ffffff);
+    font-size: 1em;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-family: inherit;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+input::placeholder, textarea::placeholder {
+    color: #a67c52;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+input:focus::placeholder, textarea:focus::placeholder {
+    opacity: 0.4;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #8b5e3c;
+    box-shadow: 
+        0 0 0 3px rgba(139, 94, 60, 0.2),
+        inset 0 2px 4px rgba(0,0,0,0.05);
+    transform: translateY(-2px) scale(1.01);
+    background: linear-gradient(135deg, #ffffff, #fffdf9);
+}
+
+input:hover, select:hover, textarea:hover {
+    border-color: #a67c52;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.08);
+}
+
+input[type="checkbox"], input[type="radio"] {
+    width: auto;
+    margin-right: 12px;
+    transform: scale(1.3);
+    accent-color: #8b5e3c;
+}
+
+input[type="number"] {
+    width: 100px;
+    display: inline-block;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.5;
+}
+
+small {
+    color: #7b4f2a;
+    font-size: 0.9em;
+    margin-top: 8px;
+    display: block;
+    font-style: italic;
+    transition: color 0.3s ease;
+}
+
+/* Grupos de inputs mejorados */
+.input-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.producto-group {
+    background: linear-gradient(135deg, rgba(248, 231, 215, 0.6), rgba(255, 255, 255, 0.4));
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #d4a77d;
+    transition: all 0.4s ease;
+    position: relative;
+    backdrop-filter: blur(5px);
+}
+
+.producto-group::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.producto-group:hover {
+    background: linear-gradient(135deg, rgba(248, 231, 215, 0.8), rgba(255, 255, 255, 0.6));
+    border-color: #8b5e3c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.producto-group:hover::before {
+    opacity: 1;
+}
+
+.producto-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.producto-label:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.producto-info {
+    flex: 1;
+}
+
+.producto-info strong {
+    color: #5c3618;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.producto-label:hover .producto-info strong {
+    color: #4f2d12;
+}
+
+.producto-info small {
+    color: #7b4f2a;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.cantidad-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 35px;
+    transition: all 0.3s ease;
+}
+
+.cantidad-label:hover {
+    transform: translateX(5px);
+}
+
+.cantidad-label input {
+    width: 90px;
+    margin: 0;
+}
+
+/* Checkboxes y radios personalizados mejorados */
+.checkbox-group, .radio-group {
+    margin: 20px 0;
+}
+
+.checkbox-item, .radio-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 15px 0;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.checkbox-item::before, .radio-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(139, 94, 60, 0.05), transparent);
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.checkbox-item:hover, .radio-item:hover {
+    background: rgba(248, 231, 215, 0.5);
+    transform: translateX(5px);
+}
+
+.checkbox-item:hover::before, .radio-item:hover::before {
+    opacity: 1;
+}
+
+.checkmark, .radio-mark {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #d4a77d;
+    border-radius: 6px;
+    display: inline-block;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: linear-gradient(135deg, #ffffff, #f8f8f8);
+}
+
+.radio-mark {
+    border-radius: 50%;
+}
+
+.checkmark:hover, .radio-mark:hover {
+    border-color: #8b5e3c;
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(139, 94, 60, 0.2);
+}
+
+input[type="checkbox"]:checked + .checkmark,
+input[type="radio"]:checked + .radio-mark {
+    background: linear-gradient(135deg, #8b5e3c, #a67c52);
+    border-color: #8b5e3c;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(139, 94, 60, 0.3);
+}
+
+input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: -3px;
+    left: 3px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    animation: checkPop 0.3s ease;
+}
+
+@keyframes checkPop {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+input[type="radio"]:checked + .radio-mark::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+    animation: radioPop 0.3s ease;
+}
+
+@keyframes radioPop {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* ========================================
+   BOTONES MEJORADOS
+======================================== */
+button, .btn-primary, .btn-secondary, .btn-link {
+    background: linear-gradient(135deg, #8b5e3c, #a67c52, #b8916d);
+    color: white;
+    border: none;
+    padding: 18px 30px;
+    border-radius: 12px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    font-weight: 600;
+    min-width: 160px;
+    letter-spacing: 0.5px;
+    border: 2px solid transparent;
+}
+
+button::before, .btn-primary::before, .btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translate(-50%, -50%);
+}
+
+button::after, .btn-primary::after, .btn-secondary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+button:hover::before, .btn-primary:hover::before, .btn-secondary:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+button:hover::after, .btn-primary:hover::after, .btn-secondary:hover::after {
+    left: 100%;
+}
+
+button:hover, .btn-primary:hover, .btn-secondary:hover, .btn-link:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+    border-color: rgba(255,255,255,0.3);
+}
+
+button:active, .btn-primary:active, .btn-secondary:active {
+    transform: translateY(-2px) scale(0.98);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6c757d, #868e96, #9ca3af);
+}
+
+.btn-link {
+    background: linear-gradient(135deg, #007bff, #0056b3, #004085);
+}
+
+.form-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 2px solid rgba(212, 167, 125, 0.3);
+}
+
+/* ========================================
+   FACTURA MEJORADA
+======================================== */
+.factura-container {
+    width: 100%; /* Ancho completo como los formularios */
+    margin: 30px 0;
+}
+
+.factura {
+    background: linear-gradient(135deg, #ffffff, #f8e7d7);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    margin-bottom: 25px;
+    position: relative;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(212, 167, 125, 0.3);
+}
+
+.factura::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    border-radius: 20px;
+    pointer-events: none;
+    animation: facturaShimmer 8s ease-in-out infinite;
+}
+
+@keyframes facturaShimmer {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.5; }
+}
+
+.factura-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #8b5e3c;
+    padding-bottom: 25px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.factura-header::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #8b5e3c, #d4a77d, #8b5e3c);
+    animation: headerGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes headerGlow {
+    from { opacity: 0.7; }
+    to { opacity: 1; }
+}
+
+.empresa-info h1 {
+    color: #8b5e3c;
+    margin: 0;
+    font-size: 2.2em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.empresa-info h1:hover {
+    color: #7d4a25;
+    transform: scale(1.02);
+}
+
+.empresa-info h2 {
+    color: #5c3618;
+    margin: 8px 0;
+    font-size: 1.8em;
+    transition: color 0.3s ease;
+}
+
+.eslogan-factura {
+    font-style: italic;
+    color: #7b4f2a;
+    margin: 8px 0;
+    transition: all 0.3s ease;
+}
+
+.eslogan-factura:hover {
+    color: #6a4424;
+    transform: translateX(5px);
+}
+
+.logo-factura img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: all 0.4s ease;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.logo-factura img:hover {
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.empresa-detalles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    margin-bottom: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(248, 231, 215, 0.4), rgba(255, 255, 255, 0.3));
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.empresa-detalles:hover {
+    background: linear-gradient(135deg, rgba(248, 231, 215, 0.6), rgba(255, 255, 255, 0.5));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.empresa-detalles h3 {
+    color: #5c3618;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #d4a77d;
+    padding-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.empresa-detalles h3:hover {
+    border-bottom-color: #8b5e3c;
+    color: #4f2d12;
+}
+
+.factura-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    margin-bottom: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(177, 103, 42, 0.15), rgba(197, 123, 62, 0.1));
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.factura-info:hover {
+    background: linear-gradient(135deg, rgba(177, 103, 42, 0.2), rgba(197, 123, 62, 0.15));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.factura-info h3 {
+    color: #5c3618;
+    margin-bottom: 18px;
+    font-size: 1.2em;
+}
+
+.factura-info p {
+    margin: 8px 0;
+    color: #4f2d12;
+    transition: color 0.3s ease;
+}
+
+.factura-info p:hover {
+    color: #3d2109;
+}
+
+.productos-detalle {
+    margin-bottom: 30px;
+}
+
+.productos-detalle h3 {
+    color: #5c3618;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.4em;
+    position: relative;
+}
+
+.productos-detalle h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    width: 60px;
+    height: 2px;
+    background: #8b5e3c;
+    transform: translateX(-50%);
+    border-radius: 1px;
+}
+
+.tabla-productos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.tabla-productos:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.tabla-productos th {
+    background: linear-gradient(135deg, #8b5e3c, #a67c52);
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    text-align: left;
+    position: relative;
+}
+
+.tabla-productos th::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: thShimmer 3s ease-in-out infinite;
+}
+
+@keyframes thShimmer {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.tabla-productos td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.tabla-productos tr:hover td {
+    background: rgba(248, 231, 215, 0.3);
+}
+
+/* ========================================
+   FOOTER MEJORADO
+======================================== */
+footer {
+    background: linear-gradient(135deg, rgba(65, 34, 8, 0.9), rgba(85, 44, 18, 0.9));
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+    border-radius: 20px;
+    box-shadow: 0 -8px 20px rgba(0,0,0,0.2);
+    position: relative;
+    backdrop-filter: blur(10px);
+    animation: footerSlideUp 0.8s ease-out;
+}
+
+@keyframes footerSlideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+    border-radius: 20px;
+    pointer-events: none;
+    animation: footerShimmer 6s ease-in-out infinite;
+}
+
+@keyframes footerShimmer {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+footer .redes {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 15px;
+}
+
+footer .redes img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    filter: brightness(1);
+}
+
+footer .redes img:hover {
+    transform: scale(1.15) rotate(10deg);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    filter: brightness(1.2);
+}
+
+/* ========================================
+   RESPONSIVE MEJORADO
+======================================== */
+@media (max-width: 768px) {
+    body {
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+    
+    .banner {
+        font-size: 1.5em;
+        top: 15px;
+    }
+    
+    .eslogan {
+        font-size: 1em;
+        top: 120px;
+    }
+    
+    .logo {
+        width: 18%;
+        top: 15px;
+        left: 15px;
+    }
+    
+    nav {
+        gap: 10px;
+        padding: 12px;
+    }
+    
+    nav a {
+        padding: 12px 15px;
+        font-size: 0.9em;
+    }
+    
+    .main {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .left {
+        width: 100%;
+        line-height: 60px;
+    }
+    
+    .listaProductos {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    form {
+        padding: 25px;
+    }
+    
+    .input-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .empresa-detalles,
+    .factura-info {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    button, .btn-primary, .btn-secondary, .btn-link {
+        min-width: 200px;
+        padding: 15px 25px;
+    }
+}
+
+/* ========================================
+   ANIMACIONES ADICIONALES
+======================================== */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.pulse-animation {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.bounce-animation {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+/* Efectos de entrada escalonados */
+.stagger-animation > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: staggerFadeIn 0.6s ease-out forwards;
+}
+
+.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes staggerFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efectos de scroll suaves */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Mejoras en la accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Estados de enfoque mejorados para accesibilidad */
+*:focus {
+    outline: 3px solid rgba(139, 94, 60, 0.5);
+    outline-offset: 2px;
+}
+
+button:focus, .btn-primary:focus, .btn-secondary:focus, .btn-link:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}
